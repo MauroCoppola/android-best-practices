@@ -1,31 +1,31 @@
-# Best practices in Android development
+# Buone pratiche nello sviluppo Android
 
 Evita di reinventare la ruota seguendo queste linee guida. Lezioni apprese dagli sviluppatori Android in [Futurice](http://www.futurice.com). Se sei interessato allo sviluppo iOS o Windows Phone, assicurati di controllare anche i nostri documenti [**Buone pratiche per iOS**](https://github.com/futurice/ios-good-practices) e [**Buone pratiche per lo sviluppo di App Windows**](https://github.com/futurice/windows-app-development-best-practices).
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-android--best--practices-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1091)
 [![Spice Program Sponsored](https://img.shields.io/badge/chilicorn-sponsored-brightgreen.svg?logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAA4AAAAPCAMAAADjyg5GAAABqlBMVEUAAAAzmTM3pEn%2FSTGhVSY4ZD43STdOXk5lSGAyhz41iz8xkz2HUCWFFhTFFRUzZDvbIB00Zzoyfj9zlHY0ZzmMfY0ydT0zjj92l3qjeR3dNSkoZp4ykEAzjT8ylUBlgj0yiT0ymECkwKjWqAyjuqcghpUykD%2BUQCKoQyAHb%2BgylkAyl0EynkEzmkA0mUA3mj86oUg7oUo8n0k%2FS%2Bw%2Fo0xBnE5BpU9Br0ZKo1ZLmFZOjEhesGljuzllqW50tH14aS14qm17mX9%2Bx4GAgUCEx02JySqOvpSXvI%2BYvp2orqmpzeGrQh%2Bsr6yssa2ttK6v0bKxMBy01bm4zLu5yry7yb29x77BzMPCxsLEzMXFxsXGx8fI3PLJ08vKysrKy8rL2s3MzczOH8LR0dHW19bX19fZ2dna2trc3Nzd3d3d3t3f39%2FgtZTg4ODi4uLj4%2BPlGxLl5eXm5ubnRzPn5%2Bfo6Ojp6enqfmzq6urr6%2Bvt7e3t7u3uDwvugwbu7u7v6Obv8fDz8%2FP09PT2igP29vb4%2BPj6y376%2Bu%2F7%2Bfv9%2Ff39%2Fv3%2BkAH%2FAwf%2FtwD%2F9wCyh1KfAAAAKXRSTlMABQ4VGykqLjVCTVNgdXuHj5Kaq62vt77ExNPX2%2Bju8vX6%2Bvr7%2FP7%2B%2FiiUMfUAAADTSURBVAjXBcFRTsIwHAfgX%2FtvOyjdYDUsRkFjTIwkPvjiOTyX9%2FAIJt7BF570BopEdHOOstHS%2BX0s439RGwnfuB5gSFOZAgDqjQOBivtGkCc7j%2B2e8XNzefWSu%2BsZUD1QfoTq0y6mZsUSvIkRoGYnHu6Yc63pDCjiSNE2kYLdCUAWVmK4zsxzO%2BQQFxNs5b479NHXopkbWX9U3PAwWAVSY%2FpZf1udQ7rfUpQ1CzurDPpwo16Ff2cMWjuFHX9qCV0Y0Ok4Jvh63IABUNnktl%2B6sgP%2BARIxSrT%2FMhLlAAAAAElFTkSuQmCC)](https://spiceprogram.org/)
 
-## Summary
+## Sommario
 
-#### [Use Gradle and its default project structure](#build-system)
-#### [Put passwords and sensitive data in gradle.properties](#gradle-configuration)
-#### [Use the Jackson library to parse JSON data](#libraries)
-#### [Don't write your own HTTP client, use OkHttp libraries](#networklibs)
-#### [Avoid Guava and use only a few libraries due to the *65k method limit*](#methodlimitation)
-#### [Sail carefully when choosing between Activities and Fragments](#activities-and-fragments)
-#### [Layout XMLs are code, organize them well](#resources)
-#### [Use styles to avoid duplicate attributes in layout XMLs](#styles)
-#### [Use multiple style files to avoid a single huge one](#splitstyles)
-#### [Keep your colors.xml short and DRY, just define the palette](#colorsxml)
-#### [Also keep dimens.xml DRY, define generic constants](#dimensxml)
-#### [Do not make a deep hierarchy of ViewGroups](#deephierarchy)
-#### [Avoid client-side processing for WebViews, and beware of leaks](#webviews)
-#### [Use JUnit for unit tests, Espresso for connected (UI) tests, and AssertJ-Android for easier assertions in your Android tests](#test-frameworks)
-#### [Always use ProGuard or DexGuard](#proguard-configuration)
-#### [Use SharedPreferences for simple persistence, otherwise ContentProviders](#data-storage)
-#### [Use Stetho to debug your application](#use-stetho)
-#### [Use Leak Canary to find memory leaks](#use-leakcanary)
-#### [Use continuous integration](#use-continuous-integration-1)
+#### [Usa Gradle e la sua struttura di default del progetto](#build-system)
+#### [Metti password e dati sensibili in gradle.properties](#gradle-configuration)
+#### [Usa la libreria Jackson per il parsing di dati JSON](#libraries)
+#### [Non scrivere il tuo client HTTP, usa le librerie OkHttp](#networklibs)
+#### [Evita Guava e usa solo alcune librerie in base al *limite dei 65k metodi*](#methodlimitation)
+#### [Valuta con attenzione quando devi scegliere tra Activity e Fragment](#activities-and-fragments)
+#### [Gli XML dei layout fanno parte del codice, organizzali bene](#resources)
+#### [Usa gli stili per evitare attributi duplicati all'interno degli XML dei layout](#styles)
+#### [Usa più file di stile per evitare un unico enorme file](#splitstyles)
+#### [Tieni il tuo file colors.xml breve e conforme al principio DRY, in modo da definire solo la palette](#colorsxml)
+#### [Tieni anche il tuo file dimens.xml conforme al principio DRY, in modo da definire solo costanti generiche](#dimensxml)
+#### [Non fare una gerarchia di ViewGroup troppo profonda](#deephierarchy)
+#### [Evita processazioni lato client per le WebView, e attento ai leak](#webviews)
+#### [Usa JUnit per i test unitari, Espresso per i (UI) test collegati, e AssertJ-Android per asserzioni più facili nei tuoi test Android](#test-frameworks)
+#### [Usa sempre ProGuard o DexGuard](#proguard-configuration)
+#### [Usa le SharedPreferences per la persistenza di base, altrimenti i ContentProvider](#data-storage)
+#### [Usa Stetho per il debug della tua applicazione](#use-stetho)
+#### [Usa Leak Canary per trovare memory leaks](#use-leakcanary)
+#### [Usa la continuous integration](#use-continuous-integration-1)
 
 ----------
 
